@@ -53,6 +53,25 @@ docker run \
   lukechilds/electrumx:v1.8.7
 ```
 
+Running in regtest mode:
+```
+docker run -d  \
+  -v /home/root/electrumx:/data \
+  -e DAEMON_URL=http://btc_node_user:btc_node_passw@btc_node_ip:19001 \
+  -e COIN=BitcoinSegwit \
+  -e NET=regtest \
+  -e PEER_DISCOVERY=off \
+  -e COST_SOFT_LIMIT=0 \
+  -e COST_HARD_LIMIT=0 \
+  -e SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000 \
+  -p 50002:50002 \
+  -p 50001:50001 \
+  -p 50004:50004 \
+  -p 8000:8000 \
+  lukechilds/electrumx
+```
+
+
 ## License
 
 MIT © Luke Childs
